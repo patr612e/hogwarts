@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.overskrift {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "one two";
+}
+
+.overskrift > h2 {
+  font-family: "Quintessential", cursive;
+  text-decoration: underline;
+  font-size: 1.75em;
+  margin-bottom: 1em;
+}
+
+.name_title {
+  grid-area: one;
+  justify-self: center;
+}
+
+.house_title {
+  grid-area: two;
+  justify-self: center;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "one two";
+  border-bottom: 0.5px solid black;
+}
+
+section:nth-child(even) {
+  background-color: rgb(243, 243, 243);
+}
+
+section .name {
+  grid-area: one;
+  justify-self: center;
+}
+
+section .house {
+  grid-area: two;
+  justify-self: center;
+}
+
+section > h2 {
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  justify-self: center;
+  font-family: "Quintessential", cursive;
+}
+
+.hat {
+  justify-self: center;
+  margin-bottom: 3em;
+}
+
+.responsive {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 700px) {
+  section {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "one two three four";
+  }
+
+  section .name {
+    grid-area: two;
+  }
+
+  section .house {
+    grid-area: three;
+  }
+
+  .overskrift {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "one two three four";
+  }
+
+  .name_title {
+    grid-area: two;
+  }
+
+  .house_title {
+    grid-area: three;
+  }
+}
