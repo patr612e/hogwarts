@@ -1,42 +1,66 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", start);
 
+let indlæg = [];
+
 function start() {
-  "use strict";
-
-  let indlæg = []; // variablen "indlæg" er nu et array
-
   async function hentJson1() {
-    // i denne variabel hentes json dataen ind
-
-    console.log("hent json 1");
-    // definerer "url" til at være et link (med json data)
     let url = "http://petlatkea.dk/2019/students1991.json";
 
-    let myJson = await fetch(url); // henter (fetcher) dataen fra "url" og sætter det ind i variablen "myJson"
+    let myJson = await fetch(url);
 
-    indlæg = await myJson.json(); // skal fetche dataen som json data og lægges ind i indlæg arrayet
+    indlæg = await myJson.json();
 
-    visBlogindlæg(); // kalder næste funktion
+    visIndlæg();
   }
 
-  function visBlogindlæg() {
-    // i denne funktion vises indhold i html
-    console.log("VIS DET SKER");
-
-    let dest = document.querySelector(".blogindlaeg"); // definerer variablen "dest" til at være .blogindlaeg i html dokumentet
-    let temp = document.querySelector("template"); // definerer varibalen "temp" til at være templaten i html dokumentet
+  function visIndlæg() {
+    let dest = document.querySelector(".blogindlaeg");
+    let temp = document.querySelector("template");
 
     indlæg.forEach(indlæg => {
-      // gennemløber arrayet
-      let klon = temp.cloneNode(true).content; // variablen "klon" kloner nu "temp" (templaten) fra html
+      let klon = temp.cloneNode(true).content;
 
-      klon.querySelector(".name").innerHTML = indlæg.fullname; // inde i templaten, skal elementet med class'en .dato have content med endpoint dato fra                                                                  json-dataen
+      klon.querySelector(".name").innerHTML = indlæg.fullname;
 
-      klon.querySelector(".house").innerHTML = indlæg.house; // samme som ovenstående
+      klon.querySelector(".house").innerHTML = indlæg.house;
 
-      dest.appendChild(klon); // kloner til dest (.blogindlaeg)
+      dest.appendChild(klon);
     });
   }
 
   hentJson1();
+}
+
+// SHOWS SELECTED FILTER ON FILTER-MENU
+
+document.querySelectorAll(".filter").forEach(but => {
+  but.addEventListener("click", filteringValgt);
+});
+
+function filteringValgt() {
+  document.querySelectorAll(".filter").forEach(but => {
+    but.classList.remove("valgt");
+  });
+  this.classList.add("valgt");
+  filter = this.getAttribute("data-hold");
+  filtering();
+}
+
+function filtering() {
+  // RUNS THROUGH JSON DATA
+  // SHOWS ONLY THE DATA OF THE SELECTED FILTER
+}
+
+document.querySelectorAll(".sort").forEach(but => {
+  but.addEventListener("click", sortingValgt);
+});
+
+function sortingValgt() {
+  document.querySelectorAll(".sort").forEach(but => {
+    but.classList.remove("valgt");
+  });
+  this.classList.add("valgt");
+  sorting();
 }
