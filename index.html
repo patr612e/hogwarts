@@ -6,14 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Quintessential&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Quintessential&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <main>
@@ -24,34 +18,74 @@
         </div>
 
         <nav>
-          <button class="filter valgt" data-hold="all">All</button>
-          <button class="filter" data-hold="Gryffindor">Gryffindor</button>
-          <button class="filter" data-hold="Hufflepuff">Hufflepuff</button>
-          <button class="filter" data-hold="Ravenclaw">Ravenclaw</button>
-          <button class="filter" data-hold="Slytherin">Slytherin</button>
+          <button class="filter valgt" data-house="all">All</button>
+          <button class="filter" data-house="Gryffindor">Gryffindor</button>
+          <button class="filter" data-house="Hufflepuff">Hufflepuff</button>
+          <button class="filter" data-house="Ravenclaw">Ravenclaw</button>
+          <button class="filter" data-house="Slytherin">Slytherin</button>
         </nav>
 
         <nav>
-          <button class="sort">First name</button>
-          <button class="sort">Last name</button>
-          <button class="sort valgt">House</button>
+          <button class="sort valgt" data-sort="firstName">First name</button>
+          <button class="sort" data-sort="lastName">Last name</button>
+          <button class="sort" data-sort="house">House</button>
         </nav>
+
+        <div id="modal">
+          <button class="closebutton">X</button>
+
+          <div class="modalwrapper">
+            <h2 class="popup_name" data-field="fullname"></h2>
+            <h2 class="popup_house" data-field="house"></h2>
+            <img src="" alt="portrait" data-field="image" class="popup_picture" />
+            <img src="" alt="crest" data-field="crest" class="crest" />
+            <h2 class="bloodstatus" data-field="bloodstatus">blod</h2>
+          </div>
+        </div>
 
         <div class="overskrift">
           <h2 class="name_title">Full name</h2>
           <h2 class="house_title">Housing</h2>
+          <h2 class="picture_title">Picture</h2>
+          <h2 class="remove_title">Expel</h2>
         </div>
-        <main class="blogindlaeg"></main>
+        <main class="liste">
+          // CLONE HERE
+        </main>
 
-        <template>
+        <template id="student">
           <section>
-            <h2 class="name"></h2>
-
-            <h2 class="house"></h2>
+            <div class="popupclick">
+              <h2 class="name" data-field="fullname"></h2>
+              <h2 class="house" data-field="house"></h2>
+              <img src="" alt="portrait" data-field="image" class="picture" />
+            </div>
+            <button class="remove" data-action="remove">expel</button>
+            <button class="prefect" data-action="add">add prefect</button>
           </section>
         </template>
       </div>
     </main>
+
+    <table id="expelled">
+      <h2>EXPELLED STUDENTS</h2>
+      <thead>
+        <th data-ex="firstname">First Name</th>
+        <th data-ex="lastname">Last Name</th>
+        <th data-ex="house">House</th>
+      </thead>
+      <tbody>
+        <!-- CLONE HERE -->
+      </tbody>
+    </table>
+
+    <template>
+      <tr>
+        <td data-expelled="firstName">First Name</td>
+        <td data-expelled="lastName">Last Name</td>
+        <td data-expelled="house">House</td>
+      </tr>
+    </template>
 
     <script src="script.js"></script>
   </body>

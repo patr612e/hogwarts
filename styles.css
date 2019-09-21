@@ -1,3 +1,7 @@
+* {
+  padding: 5px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,8 +14,8 @@ body {
 
 .overskrift {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "one two";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "one two three four five";
 }
 
 .overskrift > h2 {
@@ -31,28 +35,61 @@ body {
   justify-self: center;
 }
 
+.picture_title {
+  grid-area: three;
+  justify-self: center;
+}
+
+.remove_title {
+  grid-area: four;
+  justify-self: center;
+}
+
 section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "one two";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "one two three four five";
   border-bottom: 0.5px solid black;
 }
 
-section:nth-child(even) {
+/* section:nth-child(even) {
   background-color: rgb(243, 243, 243);
-}
+} */
 
 section .name {
   grid-area: one;
   justify-self: center;
+  align-self: center;
+  cursor: pointer;
 }
 
 section .house {
   grid-area: two;
   justify-self: center;
+  align-self: center;
+  cursor: pointer;
 }
 
-section > h2 {
+section .picture {
+  grid-area: three;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+}
+
+section .remove {
+  grid-area: four;
+  justify-self: center;
+  align-self: center;
+}
+
+section .prefect {
+  grid-area: five;
+  justify-self: center;
+  align-self: center;
+}
+
+section h2 {
   font-size: 1em;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -76,29 +113,41 @@ h1 {
 
 @media screen and (min-width: 700px) {
   section {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "one two three four";
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "one two three four five";
   }
 
   section .name {
-    grid-area: two;
+    grid-area: one;
   }
 
   section .house {
+    grid-area: two;
+  }
+
+  section .picture {
     grid-area: three;
   }
 
   .overskrift {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "one two three four";
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "one two three four five";
   }
 
   .name_title {
-    grid-area: two;
+    grid-area: one;
   }
 
   .house_title {
+    grid-area: two;
+  }
+
+  .picture_title {
     grid-area: three;
+  }
+
+  .remove_title {
+    grid-area: four;
   }
 }
 
@@ -128,4 +177,60 @@ button {
   cursor: pointer;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
+  max-height: 50px;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  width: 50vw;
+  height: 500px;
+  z-index: 10;
+  background-color: rgb(210, 210, 210);
+  top: 100px;
+  left: 25vw;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; */
+}
+
+.popupclick {
+  display: contents;
+  grid-column: 1/4;
+}
+
+/* .modalwrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template: 1fr 1fr;
+} */
+
+.popup_name {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.popup_house {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.popup_picture {
+  height: 200px;
+  width: 200px;
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.bloodstatus {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.crest {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  height: 200px;
+  width: 200px;
+  border-radius: 50px;
 }
